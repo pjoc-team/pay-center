@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wechat pay</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="padding: 2%;">
+    <h1 id="status"></h1>
+    <img id="qr" src="data:image/png;base64,{{.qrcode}}"/>
+    <h1>金额：<b style="color: red">{{.amt}}</b></h1>
+    <h2><b style="color: red">务必支付准确的金额，否则会支付失败</b></h2>
+    <input id="outTradeNo" type="hidden" name="outTradeNo" value="{{.outTradeNo}}">
+</div>
+
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        orderId = $("input#outTradeNo").val();
+        queryOrder();
+        var isSuccess = false;
+
+        function queryOrder() {
+            if (!isSuccess) {
+                setTimeout(queryOrder, 1000);
+            }
+            $.get("/query/" + orderId, function (json) {
+                console.log("orderId: " + orderId + ", data: " + json.payOrders);
+                // json = JSON.parse(data);
+                if (json.payOrders.length > 0) {
+                    console.log("orderId: " + orderId + ", data[0]: " + json.payOrders[0].order_status);
+                    if (json.payOrders[0].order_status === "SUCCESS") {
+                        $("#status").text("支付成功");
+                        $("#status").css("color", "green");
+                        isSuccess = true;
+                        // alert("支付成功！");
+                    }
+                }
+            });
+        }
+    });
+
+</script>
+</html>

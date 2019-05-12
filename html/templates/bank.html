@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank pay</title>
+</head>
+<body>
+    <form id="bank"  action="{{.url}}" method="post" onload="submit()">
+         <input type="hidden" name="merchant_code" value="{{.merchant_code}}" />
+         <input type="hidden" name="service_type" value="{{.service_type}}" />
+         <input type="hidden" name="notify_url" value="{{.notify_url}}" />
+         <input type="hidden" name="interface_version" value="{{.interface_version}}" />
+         <input type="hidden" name="input_charset" value="{{.input_charset}}" />
+         <input type="hidden" name="sign_type" value="{{.sign_type}}" />
+         <input type="hidden" name="sign" value="{{.sign}}" />
+         <input type="hidden" name="return_url" value="{{.return_url}}" />
+         <input type="hidden" name="pay_type" value="{{.pay_type}}" />
+         <input type="hidden" name="client_ip" value="{{.client_ip}}" />
+         <input type="hidden" name="client_ip_check" value="{{.client_ip_check}}" />
+         <input type="hidden" name="order_no" value="{{.order_no}}" />
+         <input type="hidden" name="order_time" value="{{.order_time}}" />
+         <input type="hidden" name="order_amount" value="{{.order_amount}}" />
+         <input type="hidden" name="bank_code" value="{{.bank_code}}" />
+         <input type="hidden" name="redo_flag" value="{{.redo_flag}}" />
+         <input type="hidden" name="product_name" value="{{.product_name}}" />
+         <input type="hidden" name="product_code" value="{{.product_code}}" />
+         <input type="hidden" name="product_num" value="{{.product_num}}" />
+         <input type="hidden" name="product_desc" value="{{.product_desc}}" />
+         <input type="hidden" name="extra_return_param" value="{{.extra_return_param}}" />
+         <input type="hidden" name="extend_param" value="{{.extend_param}}" />
+         <input type="hidden" name="show_url" value="{{.show_url}}" />
+         <input type="hidden" name="orders_info" value="{{.orders_info}}" />
+    </form>
+</body>
+<script type="text/javascript">
+    window.onload = function(){
+        document.forms['bank'].submit();
+    }
+</script>
+</html>

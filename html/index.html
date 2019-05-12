@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付中心</title>
+</head>
+<body>
+<div style="padding: 10%">
+    {{/*<div style="background-color: beige;padding: 10%; border: 20px beige;">*/}}
+        {{/*<a href="/bank">*/}}
+            {{/*<h1>网银</h1>*/}}
+        {{/*</a>*/}}
+    {{/*</div>*/}}
+    <div style="height: 20px; width: 100%"></div>
+    <div style="background-color: beige;padding: 10%; border: 20px beige;width: 100%;">
+        <h1>微信收款码</h1>
+        <form title="微信" action="/wechat" method="post">
+            <span>金额（分）</span>
+            <input type="number" name="order_amt"/>
+            <input type="submit" name="支付" />
+        </form>
+    </div>
+</div>
+</body>
+</html>
